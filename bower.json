@@ -1,0 +1,19 @@
+{
+  "name": "angular-mobile-infinite-scroll",
+  "version": "0.0.0",
+  "authors": [
+    "RonaldoLee <ljxnegod@hotmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "angular": "~1.2.0"
+  }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        <script src="../bower_components/angular/angular.min.js"></script>
+        <script src="../src/angular-mobile-infinite-scroll.js"></script>
+        <script>
+            var app = angular.module('Demo', ['mobileInfiniteScroll']);
+            app.controller('ScrollDemo', function ($scope) {
+                $scope.numbers = [];
+
+                $scope.addNumbersBottom = function () {
+                    var start = $scope.numbers.length;
+                    for (var i = start; i < start + 10; i++) {
+                        $scope.numbers.push(i);
+                    }
+                };
+
+                $scope.addNumbersTop = function () {
+                    var start = -1;
+                    if ($scope.numbers.length > 0) {
+                        start = $scope.numbers[0] - 1;
+                    }
+                    for (var i = start; i > start - 10; i--) {
+                        $scope.numbers.splice(0, 0, i);
+                    }
+                };
+
+                $scope.addNumbersBottom();
+            });
+        </script>
+    </head>
+    <body ng-controller="ScrollDemo">
+        <div class="container">
+            <div>
+                <h1>Angular Mobile Infinite Scroll Demo</h1>
+
+                <p>Tap and move to add more elements.</p>
+
+                <div mobile-infinite-scroll
+                     on-reach-bottom="addNumbersBottom()"
+                     on-reach-top="addNumbersTop()"
+                     style="height: 200px; overflow-y: scroll; position: relative; border: 1px solid black">
+                    <div ng-repeat="number in numbers">Number {{number}}</div>
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>
